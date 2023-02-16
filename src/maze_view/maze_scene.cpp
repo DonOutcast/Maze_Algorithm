@@ -1,6 +1,13 @@
 #include "maze_scene.h"
 
-maze_scene::maze_scene()
-{
 
+
+MazeScene::MazeScene(QWidget *parent)
+    : QWidget{parent}, m_mode_{s21::Mode::NONE} {}
+
+auto MazeScene::set_controller(
+    const std::shared_ptr<s21::Controller> &controller) -> void {
+  m_controller_ = controller;
 }
+
+

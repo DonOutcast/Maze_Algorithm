@@ -9,12 +9,14 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    ../controller/controller.cpp \
     ../model/core/core.cc \
     main.cpp \
     mainwindow.cpp \
     maze_scene.cpp
 
 HEADERS += \
+    ../controller/controller.h \
     ../model/core/core.h \
     mainwindow.h \
     maze_scene.h

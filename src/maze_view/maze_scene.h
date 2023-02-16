@@ -26,6 +26,11 @@ public:
 private:
     s21::Mode m_mode_ {};
     std::shared_ptr<s21::Controller> m_controller_ {};
+    auto paintEvent(QPaintEvent* event) -> void override;
+    auto mousePressEvent(QMouseEvent* event) -> void override;
+
+
+
 };
 
 #endif // MAZE_SCENE_H

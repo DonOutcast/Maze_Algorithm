@@ -7,7 +7,10 @@ namespace s21 {
     public:
         Controller();
         ~Controller() = default;
+        Controller(const Controller&) = delete;
+        Controller(Controller&&) = delete;
 
+        [[nodiscard]]  Mode get_mode();
     private:
         Mode m_mode_{};
     };

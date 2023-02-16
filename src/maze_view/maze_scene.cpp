@@ -10,4 +10,12 @@ auto MazeScene::set_controller(
   m_controller_ = controller;
 }
 
+auto MazeScene::mousePressEvent(QMouseEvent* event) -> void{
+    if (this->m_controller_->get_mode() != s21::Mode::MAZE)
+        return;
 
+}
+
+auto MazeScene::paintEvent(QPaintEvent* event) -> void {
+
+}

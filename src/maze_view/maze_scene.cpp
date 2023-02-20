@@ -43,4 +43,9 @@ auto MazeScene::paintEvent(QPaintEvent* event) -> void {
     if (this->m_mode_ == s21::Mode::NONE) {
         return;
     }
+    if (this->m_mode_ == s21::Mode::MAZE) {
+        this->m_rows_ = this->m_controller_->get_maze_rows();
+        this->m_columns_ = this->m_controller_->get_maze_columns();
+    }
+
 }

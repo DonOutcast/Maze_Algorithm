@@ -11,8 +11,8 @@ namespace s21 {
         ~Controller() = default;
         Controller(const Controller&) = delete;
         Controller(Controller&&) = delete;
-        [[nodiscard]] const int get_maze_rows();
-        [[nodiscard]] const int get_maze_columns();
+        [[nodiscard]]  int get_maze_rows();
+        [[nodiscard]]  int get_maze_columns();
         [[nodiscard]]  Mode get_mode();
     private:
         Mode m_mode_{};

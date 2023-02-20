@@ -13,8 +13,8 @@ namespace s21 {
         Maze(const Maze&) = delete;
         Maze(Maze&&) = delete;
 
-        [[nodiscard]] const int get_rows();
-        [[nodiscard]] const int get_columns();
+        [[nodiscard]]  int get_rows();
+        [[nodiscard]]  int get_columns();
 
     private:
         int m_rows_{};

@@ -26,8 +26,8 @@ public:
 private:
     s21::Mode m_mode_ {};
     std::shared_ptr<s21::Controller> m_controller_ {};
-    int               m_rows {};
-    int               m_cols {};
+    int               m_rows_ {};
+    int               m_columns_ {};
     int               m_clickCounter {};
     QPoint            m_beginPosition {};
     QPoint            m_endPosition   {};

@@ -7,12 +7,12 @@ typename s21::Mode s21::Controller::get_mode() {
     return this->m_mode_;
 }
 
-const int s21::Controller::get_maze_columns() {
-    return this->m_maze_->columns();
+int s21::Controller::get_maze_columns() {
+    return this->m_maze_->get_columns();
 }
 
-const int s21::Controller::get_maze_rows() {
-    return this->m_maze_->rows();
+int s21::Controller::get_maze_rows() {
+    return this->m_maze_->get_rows();
 }
 
 

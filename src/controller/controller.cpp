@@ -15,6 +15,10 @@ int s21::Controller::get_maze_rows() {
     return this->m_maze_->get_rows();
 }
 
+//void s21::Controller::say_hello() {
+//    std::cout << "Hello World!" << std::endl;
+//}
+
 
 
 

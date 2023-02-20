@@ -12,6 +12,7 @@ SOURCES += \
     ../controller/controller.cpp \
     ../model/core/core.cc \
     ../model/core/matrix.cc \
+    ../model/maze/maze.cpp \
     main.cpp \
     mainwindow.cpp \
     maze_scene.cpp
@@ -20,6 +21,7 @@ HEADERS += \
     ../controller/controller.h \
     ../model/core/core.h \
     ../model/core/matrix.h \
+    ../model/maze/maze.h \
     mainwindow.h \
     maze_scene.h
 

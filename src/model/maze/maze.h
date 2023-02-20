@@ -12,6 +12,8 @@ namespace s21 {
         ~Maze() = default;
         Maze(const Maze&) = delete;
         Maze(Maze&&) = delete;
+        auto operator=(const Maze&) -> Maze& = delete;
+        auto operator=(Maze&&) -> Maze&& = delete;
 
         [[nodiscard]]  int get_rows();
         [[nodiscard]]  int get_columns();

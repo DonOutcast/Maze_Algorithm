@@ -26,6 +26,16 @@ public:
 private:
     s21::Mode m_mode_ {};
     std::shared_ptr<s21::Controller> m_controller_ {};
+    int               m_rows {};
+    int               m_cols {};
+    int               m_clickCounter {};
+    QPoint            m_beginPosition {};
+    QPoint            m_endPosition   {};
+    bool              isNeedSolution {};
+    static constexpr int lineWidth {2};
+    static constexpr double windowSize  {500};
+    const QString purpleColor {"#CC0099"};
+
     auto paintEvent(QPaintEvent* event) -> void override;
     auto mousePressEvent(QMouseEvent* event) -> void override;
 

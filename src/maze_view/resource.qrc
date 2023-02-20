@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/title.webp</file>
+        <file>images/tittle.jpeg</file>
+    </qresource>
+</RCC>

@@ -11,6 +11,7 @@ CONFIG += c++17
 SOURCES += \
     ../controller/controller.cpp \
     ../model/core/core.cc \
+    ../model/core/matrix.cc \
     main.cpp \
     mainwindow.cpp \
     maze_scene.cpp
@@ -18,6 +19,7 @@ SOURCES += \
 HEADERS += \
     ../controller/controller.h \
     ../model/core/core.h \
+    ../model/core/matrix.h \
     mainwindow.h \
     maze_scene.h
 
@@ -28,3 +30,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    resource.qrc

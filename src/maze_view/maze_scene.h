@@ -36,13 +36,13 @@ private:
     QPoint            m_endPosition   {};
     bool              isNeedSolution {};
     static constexpr int lineWidth {2};
-    static constexpr double windowSize  {500};
+    static constexpr double m_window_size_  {500};
     const QString purpleColor {"#CC0099"};
 
     auto paintEvent(QPaintEvent* event) -> void override;
     auto mousePressEvent(QMouseEvent* event) -> void override;
 
-    auto config_pain() -> void;
+    auto get_painter() -> QPainter;
 
 
 

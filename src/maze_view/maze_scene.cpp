@@ -30,7 +30,7 @@ auto MazeScene::mousePressEvent(QMouseEvent* event) -> void{
     repaint();
 }
 
-auto MazeScene::config_pain() -> void {
+auto MazeScene::get_painter() -> QPainter {
 
 }
 
@@ -39,10 +39,10 @@ auto MazeScene::paintEvent(QPaintEvent* event) -> void {
     QPen pen{Qt::white};
     pen.setStyle(Qt::SolidLine);
     painter.setPen(pen);
-    painter.drawLine(1, 1, 1, windowSize - 1);
-    painter.drawLine(1, 1, windowSize, 1);
-    painter.drawLine(windowSize - 1, 1, windowSize - 1, windowSize - 1);
-    painter.drawLine(1, windowSize - 1, windowSize - 1, windowSize - 1);
+    painter.drawLine(1, 1, 1, this->m_window_size_ - 1);
+    painter.drawLine(1, 1,this->m_window_size_ , 1);
+    painter.drawLine(this->m_window_size_  - 1, 1, this->m_window_size_  - 1, this->m_window_size_  - 1);
+    painter.drawLine(1, this->m_window_size_  - 1, this->m_window_size_  - 1, this->m_window_size_  - 1);
     m_mode_ = m_controller_->get_mode();
     if (this->m_mode_ == s21::Mode::NONE) {
         return;
@@ -52,8 +52,8 @@ auto MazeScene::paintEvent(QPaintEvent* event) -> void {
         this->m_columns_ = this->m_controller_->get_maze_columns();
         this->m_vertical_walls.resize(this->m_rows_, this->m_columns_);
         this->m_horizontal_walls.resize(this->m_rows_, this->m_columns_);
-        double width{this->windowSize / this-> m_columns_};
-        double height{this->windowSize / this->m_rows_};
+        double width{this->m_window_size_  / this-> m_columns_};
+        double height{this->m_window_size_ / this->m_rows_};
         for (int i{1}; i <= this->m_rows_; i++) {
             for (int j{1}; j <= this->m_columns_; j++) {
                 if (this->m_vertical_walls(i -1, j - 1) && j != this->m_columns_) {
@@ -64,6 +64,12 @@ auto MazeScene::paintEvent(QPaintEvent* event) -> void {
                 }
             }
         }
+
+
+
+
+
+
 
     }
 

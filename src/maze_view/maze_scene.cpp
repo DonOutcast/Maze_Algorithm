@@ -54,6 +54,16 @@ auto MazeScene::paintEvent(QPaintEvent* event) -> void {
         this->m_horizontal_walls.resize(this->m_rows_, this->m_columns_);
         double width{this->windowSize / this-> m_columns_};
         double height{this->windowSize / this->m_rows_};
+        for (int i{1}; i <= this->m_rows_; i++) {
+            for (int j{1}; j <= this->m_columns_; j++) {
+                if (this->m_vertical_walls(i -1, j - 1) && j != this->m_columns_) {
+                    painter.drawLine(QPointF{j * width, (i - 1) * height}, QPointF{j * width, i * height});
+                }
+                if (this->m_horizontal_walls(i - 1, j - 1) && i != this->m_rows_) {
+                    painter.drawLine(QPointF{(j - 1) * width, i * height}, QPointF{j * width, i * height});
+                }
+            }
+        }
 
     }
 

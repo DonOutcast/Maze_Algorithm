@@ -30,6 +30,10 @@ auto MazeScene::mousePressEvent(QMouseEvent* event) -> void{
     repaint();
 }
 
+auto MazeScene::config_pain() -> void {
+
+}
+
 auto MazeScene::paintEvent(QPaintEvent* event) -> void {
     QPainter painter{this};
     QPen pen{Qt::white};
@@ -46,6 +50,11 @@ auto MazeScene::paintEvent(QPaintEvent* event) -> void {
     if (this->m_mode_ == s21::Mode::MAZE) {
         this->m_rows_ = this->m_controller_->get_maze_rows();
         this->m_columns_ = this->m_controller_->get_maze_columns();
+        this->m_vertical_walls.resize(this->m_rows_, this->m_columns_);
+        this->m_horizontal_walls.resize(this->m_rows_, this->m_columns_);
+        double width{this->windowSize / this-> m_columns_};
+        double height{this->windowSize / this->m_rows_};
+
     }
 
 }

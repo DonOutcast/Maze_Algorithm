@@ -12,6 +12,7 @@
 #include <memory>
 #include "../model/core/core.h"
 #include "../controller/controller.h"
+#include "../model/core/matrix.h"
 
 
 class MazeScene final: public QWidget {
@@ -25,6 +26,8 @@ public:
     auto set_controller(const std::shared_ptr<s21::Controller>& controller) -> void;
 private:
     s21::Mode m_mode_ {};
+    s21::Matrix<bool> m_vertical_walls {};
+    s21::Matrix<bool> m_horizontal_walls {};
     std::shared_ptr<s21::Controller> m_controller_ {};
     int               m_rows_ {};
     int               m_columns_ {};
@@ -38,6 +41,8 @@ private:
 
     auto paintEvent(QPaintEvent* event) -> void override;
     auto mousePressEvent(QMouseEvent* event) -> void override;
+
+    auto config_pain() -> void;
 
 
 

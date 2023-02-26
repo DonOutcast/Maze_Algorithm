@@ -1,23 +1,32 @@
 #include "Maze.h"
 
+#  include <iostream>
+
 namespace s21
-{ 
+{
+    int setCounter = 1;
+
     Maze::Maze(int width, int height) {
         this->height = height;
         this->width = width;
+        srand((unsigned) time(NULL));
     }
 
     std::vector<std::vector< int > > Maze::GetVerWalls( void ) const {
         return verWalls;
     }
 
-    void SetVerWalls( std::vector<std::vector< int > >& );
+    void Maze::SetVerWalls( std::vector<std::vector< int > >& verWalls ) {
+        this->verWalls = verWalls;
+    }
 
     std::vector<std::vector< int > > Maze::GetHorWalls( void ) const {
         return horWalls;
     }
 
-    void SetHorWalls( std::vector<std::vector< int > >& );
+    void Maze::SetHorWalls( std::vector<std::vector< int > >& horWalls ) {
+        this->horWalls = horWalls;
+    }
 
 
     void Maze::Generate(void) {
@@ -35,8 +44,7 @@ namespace s21
     }
 
     void Maze::setupUniqSets(std::vector< int > &line) {
-        int setCounter = 0; 
-        for (std::size_t i = 0; i < width-1; ++i) {
+        for (std::size_t i = 0; i != width; ++i) {
             if (line[i] == 0) {
                 line[i] = setCounter;
                 setCounter++;
@@ -44,9 +52,18 @@ namespace s21
         }
     }
 
+    void Maze::mergeSets(std::vector< int >& line, std::size_t pos) {
+        int nextRight = line[pos+1];
+        for (std::size_t i = 0; i != width; ++i) {
+            if (line[i] == nextRight) {
+                line[i] = line[pos];
+            }
+        }
+    }
+
     void Maze::addVertWalls(std::vector< int >& line, std::size_t row) {
         std::vector< int > currWalls(width, 0);
-        for (std::size_t i = 0; i < width-1; ++i) {
+        for (std::size_t i = 0; i != width-1; ++i) {
             bool wallChoice = rand() % 2 == 0;
             if (wallChoice || line[i] == line[i+1]) {
                 currWalls[i] = 1;
@@ -56,17 +73,10 @@ namespace s21
         }
 
         currWalls[width-1] = 1;
+
         verWalls.push_back(currWalls);
     }
 
-    void Maze::mergeSets(std::vector< int >& line, std::size_t pos) {
-        int nextRight = line[pos+1];
-        for (std::size_t j = 0; j < line.size(); ++j) {
-            if (line[j] == nextRight) {
-                line[j] = line[pos];
-            }
-        }
-    }
 
     void Maze::addHorWalls(std::vector< int >& line, std::size_t row) {
         auto countSet = [](const std::vector< int >& line, std::size_t pos) {
@@ -122,8 +132,9 @@ namespace s21
     void Maze::addLastLine(std::vector< int >& line) {      
         setupUniqSets(line);
         addVertWalls(line, height-1);
+        addHorWalls(line, height-1);
 
-        for (std::size_t i = 0; i != line.size()-1; ++i) {
+        for (std::size_t i = 0; i != width-1; ++i) {
             if (line[i] != line[i+1]) {
                 verWalls[height-1][i] = 0;
                 mergeSets(line, i);

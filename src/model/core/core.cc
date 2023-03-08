@@ -8,17 +8,33 @@ s21::Coordinate &s21::Coordinate::operator=(const s21::Coordinate &other) {
     return *this;
 }
 
-bool s21::operator==(const Coordinate& lhs, const Coordinate& rhs) {
-    return lhs.x == rhs.x && lhs.y == rhs.y;
+bool s21::Coordinate::operator==(const s21::Coordinate &other) {
+    return this->x == other.x && this->y == other.y;
 }
 
-bool s21::operator!=(const Coordinate &lhs, const Coordinate &rhs) {
-    return lhs.x != rhs.x || lhs.y != rhs.y;
+bool s21::Coordinate::operator!=(const s21::Coordinate &other) {
+    return this->x != other.x && this->y != other.y;
 }
 
-s21::Coordinate s21::operator+(const Coordinate &lhs, const Coordinate &rhs) {
-    return {lhs.x + rhs.x, lhs.y + rhs.y};
+s21::Coordinate s21::Coordinate::operator+(const s21::Coordinate &other) {
+    return {this->x + other.x, this->y + other.y};
 }
+
+s21::Coordinate const s21::Coordinate::operator+(s21::Coordinate &other) {
+    return {this->x + other.x , this->y + other.y};
+}
+
+//bool s21::operator==(const Coordinate& lhs, const Coordinate& rhs) {
+//    return lhs.x == rhs.x && lhs.y == rhs.y;
+//}
+//
+//bool s21::operator!=(const Coordinate &lhs, const Coordinate &rhs) {
+//    return lhs.x != rhs.x || lhs.y != rhs.y;
+//}
+//
+//s21::Coordinate s21::operator+(const Coordinate &lhs, const Coordinate &rhs) {
+//    return {lhs.x + rhs.x, lhs.y + rhs.y};
+//}
 
 
 bool s21::random_bool() {
@@ -35,4 +51,5 @@ bool s21::percent_random_bool(int percent) {
     std::uniform_int_distribution<int> dist{0, 100};
     return dist(engine) < percent;
 }
+
 

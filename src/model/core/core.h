@@ -11,11 +11,16 @@ namespace s21 {
         Coordinate(const Coordinate&) = default;
         Coordinate(int new_x, int new_y);
         Coordinate& operator=(const Coordinate& other);
+        bool operator==(const Coordinate& other);
+        bool operator!=(const Coordinate& other);
+        Coordinate operator+(const Coordinate& other);
+        const Coordinate operator+(Coordinate& other);
+
     };
 
-    bool operator==(const Coordinate& lhs, const Coordinate& rhs);
-    bool operator!=(const Coordinate& lhs, const Coordinate& rhs);
-    Coordinate operator+(const Coordinate& lhs, const Coordinate& rhs);
+//    bool operator==(const Coordinate& lhs, const Coordinate& rhs);
+//    bool operator!=(const Coordinate& lhs, const Coordinate& rhs);
+//    Coordinate operator+(const Coordinate& lhs, const Coordinate& rhs);
 
 
     enum class Mode {

@@ -15,6 +15,14 @@ int s21::Controller::get_maze_rows() {
     return this->m_maze_->get_rows();
 }
 
+std::vector<std::pair<int, int>>
+s21::Controller::get_maze_solution(const std::pair<int, int> &begin, const std::pair<int, int> &end) {
+
+    return this->m_maze_->search_path(begin, end);
+}
+
+
+
 //void s21::Controller::say_hello() {
 //    std::cout << "Hello World!" << std::endl;
 //}
